@@ -1,0 +1,41 @@
+<%- include("propeties/header.ejs") %>
+
+<main>
+  <div class="overlay"></div>
+  <section>
+    <div id="main-section">
+      <!-- Popup form -->
+      <div class="form-popup" id="myForm">
+          <form action="/create" class="form-container" method="post">
+            <h1 id="form-title">Add new note</h1>
+        
+            
+            <textarea id="title-text" maxlength="150" type="text" placeholder="What is the title?" name="title" class="input title" required></textarea>
+        
+            
+            <textarea maxlength="" type="text" name="content" class="content input"></textarea>
+            <div class="btn-placeholder">
+              <button type="submit" class="btn">Create</button>
+              <button type="button" class="btn cancel" onclick="isFormVis()">Close</button>
+            </div>
+          </form>
+      </div>
+      <!-- Blog display -->
+      <div id="blogs-section">
+        <% for( var i = 0; i < titles.length; i++){ %>
+
+          <div class="blog-container" id="<%=i%>">
+            <div class="title-holder">
+              <h2 class="blog-title"><%= titles[i] %></h2>
+              <div class="blog-cont-footer"><p class="blog-footer read">Read More</p><p class="blog-footer time"><%=dates[i] %></p></div>
+              
+            </div>
+          </div>
+
+        <% } %>
+      </div>
+    </div>
+    
+  </section>
+</main>
+<%- include("propeties/footer.ejs") %>

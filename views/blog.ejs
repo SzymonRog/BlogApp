@@ -1,0 +1,61 @@
+<%- include("propeties/header.ejs") %>
+<main>
+    
+    <div class="overlay"></div>
+    <section>
+    
+      <div id="main-section">
+
+        <!-- Popup form -->
+        <div class="form-popup popup" id="myForm">
+            <form action="/create" class="form-container" method="post">
+            <h1 id="form-title">Add new note</h1>
+        
+            
+            <textarea id="title-text" maxlength="150" type="text" placeholder="What is the title?" name="title" class="input title" required></textarea>
+        
+            
+            <textarea maxlength="500" type="text" name="content" class="content input"></textarea>
+            <div class="btn-placeholder">
+                <button type="submit" class="btn">Create</button>
+                <button type="button" class="btn cancel" onclick="isFormVis()">Close</button>
+            </div>
+            </form>
+        </div>
+        <!-- Delate popup -->
+        <div id="del-popup">
+          <form action="/delete-blog" method="post">
+            <p>Are you sure you want to delete the file?</p>
+            <div id="btn-placeholder-del">
+              <button type="submit" id="del-btn-sub" class="btn">Delete</button>
+              <button class="btn" type="button" id="del-btn-clo" onclick="isDelVis()">Close</button>
+            </div>
+            
+          </form>
+        </div>
+        <!-- Edit popup -->
+        <div class="edit-popup popup" id="edit-popup">
+          <form action="/edit" class="form-container" method="post">
+          <h1 id="form-title">Edit current note</h1>
+      
+          
+          <textarea id="title-text" maxlength="150" type="text" placeholder="What is the title?" name="title-edit" class="input title" required><%= locals.title %></textarea>
+      
+          
+          <textarea maxlength="" type="text" name="content-edit" class="content input"><%= locals.content %></textarea>
+          <div class="btn-placeholder">
+              <button type="submit" class="btn">Edit</button>
+              <button type="button" class="btn cancel" onclick="isEditFormVis()">Close</button>
+          </div>
+          </form>
+      </div>
+        <!-- Blog content -->
+        <div id="blog-cnt">
+            <h1 id="blog-title-main"><%= locals.title %></h1>
+            <p class="content-container"><%= locals.content %></p>
+        </div>
+      </div>
+    </section>
+
+</main>
+<%- include("propeties/footer.ejs") %>
